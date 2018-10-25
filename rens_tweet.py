@@ -36,6 +36,7 @@ if __name__ == '__main__':
             
             hashtagFraTweet = {}
             duplikatHashtag = ["worlds2018"]
+
             if tweet["entities"]["hashtags"] is not None:
                 i = 1
                 for hashtag in tweet["entities"]["hashtags"]:
@@ -45,6 +46,7 @@ if __name__ == '__main__':
                         })
                         duplikatHashtag.append(hashtag["text"].lower())
                         i+=1
+
             tweet_dato = (datetime.strptime(tweet['created_at'],'%a %b %d %H:%M:%S +0000 %Y').replace(tzinfo=pytz.UTC)) # Alle klokkeslett er satt til UTC! Samme tidsone som gmt
             formatert_tweet_dato = (datetime.strftime(tweet_dato,'%Y-%m-%d %H:%M:%S'))
 
@@ -54,8 +56,9 @@ if __name__ == '__main__':
 
             standardInfoFraTweet = {
                 "created_at": formatert_tweet_dato,
+                "tweet_id": tweet['id'],
                 "text": tweet['text'],
-                "source": clean_html(tweet['source']), #sjekk om dette funker
+                "source": clean_html(tweet['source']),
                 "user_id": tweet['user']['id'],
                 "name": tweet['user']['name'],
                 "screen_name": tweet['user']['screen_name'],
