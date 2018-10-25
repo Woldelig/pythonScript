@@ -9,6 +9,7 @@ def get_parser():
     parser = ArgumentParser()
     parser.add_argument('--tweets')
     parser.add_argument('--fil')
+    parser.add_argument('--geo', default = False)
     return parser
 
 def merge(x, y):
@@ -56,14 +57,12 @@ if __name__ == '__main__':
 
             standardInfoFraTweet = {
                 "created_at": formatert_tweet_dato,
-                "tweet_id": tweet['id'],
                 "text": tweet['text'],
                 "source": clean_html(tweet['source']),
                 "user_id": tweet['user']['id'],
                 "name": tweet['user']['name'],
                 "screen_name": tweet['user']['screen_name'],
                 "location": tweet['user']['location'],
-                "url": tweet['user']['url'],
                 "description": tweet['user']['description'],
                 "verified": tweet['user']['verified'],
                 "followers_count": tweet['user']['followers_count'],
@@ -77,7 +76,7 @@ if __name__ == '__main__':
             
             geoDataFraTweet = None
 
-            if tweet['place'] is not None:
+            if tweet['place'] is not None and args.geo:
                 geoDataFraTweet = {
                     "country": tweet['place']['country'].lower(),
                     "country_code": tweet['place']['country_code'].lower(),
@@ -91,10 +90,8 @@ if __name__ == '__main__':
                 nyTweet = merge(nyTweet, hashtagFraTweet)
             elif geoDataFraTweet is not None and hashtagFraTweet is None:
                 nyTweet = merge(standardInfoFraTweet, geoDataFraTweet)
-            elif hashtagFraTweet is not None and geoDataFraTweet is None:
-                nyTweet = merge(standardInfoFraTweet, hashtagFraTweet)
             else:
-                nyTweet = standardInfoFraTweet
+                nyTweet = merge(standardInfoFraTweet, hashtagFraTweet)
 
             x['rader'].append(nyTweet)
 

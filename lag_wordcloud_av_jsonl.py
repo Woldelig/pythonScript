@@ -17,12 +17,16 @@ if __name__ == '__main__':
     fname = args.fil
 
     all_posts = []
-    with open(fname) as f:
-        for line in f:
+    with open(fname, encoding='UTF-8') as f:
+        fil = json.loads(f.read())
+
+        for objekt in fil['rader']:
+            all_posts.append(objekt.get('text', ''))
+        """for line in f:
             post = json.loads(line)
-            all_posts.append(post.get('text', '')) #bytt om til attributtet du ønsker og lage wordcloud av. Twitter: text, fb:message
+            all_posts.append(post.get('text', '')) #bytt om til attributtet du ønsker og lage wordcloud av. Twitter: text, fb:message"""
     text = ' '.join(all_posts)
-    stop_list = ['save', 'free', 'today', 'get', 'title', 'titles', 'www', 'https', 'http', 'com', 'youtube'] #ord som man ikke skal ha med
+    stop_list = ['get', 'title', 'titles', 'www', 'https', 'http', 'com', 'youtube'] #ord som man ikke skal ha med
     stop_list.extend(stopwords.words('english'))
     wordcloud = WordCloud(stopwords=stop_list).generate(text)
     plt.imshow(wordcloud)
