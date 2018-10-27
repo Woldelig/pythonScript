@@ -19,7 +19,7 @@ if __name__ == '__main__':
     fname = args.fil
 
     all_posts = []
-    with open(fname, encoding='UTF-8') as f:
+    with open(fname) as f:
         """fil = json.loads(f.read())
 
         for objekt in fil['rader']:
@@ -34,7 +34,7 @@ if __name__ == '__main__':
     stop_list.extend(stopwords.words('english'))
     tweet_mask = imread("D:\\pythontest\\pythonScript\\mask\\twitter_mask.png")
 
-    wordcloud = WordCloud(stopwords=stop_list, background_color="white", mask = tweet_mask).generate(text) #kan legge til Mask for å forme wordclouden!
+    wordcloud = WordCloud(width=1200, height=600, stopwords=stop_list, background_color="white", mask = tweet_mask).generate(text) #kan legge til Mask for å forme wordclouden!
     plt.imshow(wordcloud)
     plt.axis("off")
-    plt.savefig('wordcloud_{}.png'.format(args.fil), dpi=300) #dpi avgir skarpheten på bildet
+    plt.savefig('wordcloud_{}.png'.format(args.fil), dpi=600) #dpi avgir skarpheten på bildet
