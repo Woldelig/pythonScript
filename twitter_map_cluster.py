@@ -31,7 +31,7 @@ def make_map(geojson_file, map_file):
 
     popuptekst = 'Tweet text: ' + tweet['properties']['text']
     if tweet['properties']['location'] is not None:
-        popuptekst += 'Location: ' + tweet['properties']['location']
+        popuptekst += ' Location: ' + tweet['properties']['location']
     
     marker = folium.Marker(tweet['geometry']['coordinates'], popup=folium.Popup(popuptekst, parse_html=True))
     marker.add_to(marker_cluster)

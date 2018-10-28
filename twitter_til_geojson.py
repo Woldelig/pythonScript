@@ -78,9 +78,7 @@ if __name__ == '__main__':
                         geo_data['features'].append(geo_json_feature)
 
             except KeyError:
-                # Skip if json doc is not a tweet (errors, etc.)
                 continue
      
-    # Save geo data
     with open(args.geojson, 'w') as fout:
         fout.write(json.dumps(geo_data, indent=4))
