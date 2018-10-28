@@ -58,14 +58,14 @@ if __name__ == '__main__':
                         }
                         geo_data['features'].append(geo_json_feature)
                     else:
-                        xcenter = (float(tweet['place']['bounding_box']['coordinates'][0][0][0]) - float(tweet['place']['bounding_box']['coordinates'][0][1][0]))/2
-                        ycenter = (float(tweet['place']['bounding_box']['coordinates'][0][1][1]) - float(tweet['place']['bounding_box']['coordinates'][0][2][1]))/2
+                        xcenter = (tweet['place']['bounding_box']['coordinates'][0][0][0] - tweet['place']['bounding_box']['coordinates'][0][2][0])/2
+                        ycenter = (tweet['place']['bounding_box']['coordinates'][0][0][1] - tweet['place']['bounding_box']['coordinates'][0][1][1])/2
                         geo_json_feature = {
                             "type": "Feature",
                         "geometry": {
                                "type": "Point",
                                 "coordinates":[
-                                     xcenter + tweet['place']['bounding_box']['coordinates'][0][0][0],
+                                     xcenter + tweet['place']['bounding_box']['coordinates'][0][2][0],
                                      ycenter + tweet['place']['bounding_box']['coordinates'][0][1][1]
                                 ]
                             },
