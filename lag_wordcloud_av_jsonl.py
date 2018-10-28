@@ -1,3 +1,10 @@
+"""
+Koden er bygget på koden fra pensumboken Mastering Social Media Mining with Python av Marco Bonzanini
+
+Original koden kan finnes på https://github.com/bonzanini/Book-SocialMediaMiningPython/blob/master/Chap04/facebook_posts_wordcloud.py
+
+"""
+
 import json
 import matplotlib.pyplot as plt
 from argparse import ArgumentParser

@@ -1,3 +1,10 @@
+"""
+Koden er bygget på koden fra pensumboken Mastering Social Media Mining with Python av Marco Bonzanini
+
+Original koden kan finnes på https://github.com/bonzanini/Book-SocialMediaMiningPython/blob/master/Chap02-03/twitter_make_geojson.py
+
+"""
+
 import json
 from argparse import ArgumentParser
 
