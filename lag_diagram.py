@@ -10,7 +10,7 @@ if __name__ == '__main__':
     xl = np.array(['Rådata', 'Script', 'Excel'])
     plt.xticks(x, xl)
     plt.xticks(rotation='vertical')
-    plt.title('Filstørrelses reduksjon i rengjøringsfasen')
+    plt.title('Datareduksjon i rengjøringsfasen')
     plt.tight_layout()
 
     plt.savefig('størrelsesReduksjonGraf.png', dpi=1500)
