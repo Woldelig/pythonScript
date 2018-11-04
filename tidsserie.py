@@ -37,7 +37,7 @@ if __name__ == '__main__':
         date_formatter = mdates.DateFormatter('%d-%b')
 
         datemin = datetime(2018, 10, 5, 13, 0) #Fra dato
-        datemax = datetime(2018, 10, 15, 19, 30) #Til dato
+        datemax = datetime(2018, 11, 4, 13, 0) #Til dato
 
         ax.xaxis.set_major_locator(day)
         ax.xaxis.set_major_formatter(date_formatter)
