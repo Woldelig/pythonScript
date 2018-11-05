@@ -27,17 +27,21 @@ if __name__ == '__main__':
 
     all_posts = []
     with open(fname) as f:
-        """fil = json.loads(f.read())
-
-        for objekt in fil['rader']:
-            all_posts.append(objekt.get('text', ''))"""
         for line in f:
             post = json.loads(line)
-            for hashtag in post["entities"]["hashtags"]:
-                all_posts.append(post.get(hashtag['text'].lower(), ''))
-            all_posts.append(post.get('text', '')) #bytt om til attributtet du ønsker og lage wordcloud av. Twitter: text, fb:message
-    text = ' '.join(all_posts)
-    stop_list = ['get', 'title', 'titles', 'www', 'https', 'http', 'com', 'youtube'] #ord som man ikke skal ha med
+            all_posts.append(post.get('hashtag_1', ''))
+        """for line in f:
+            post = json.loads(line)
+            try:
+                for hashtag in post["entities"]["hashtags"]:
+                    all_posts.append(post.get(hashtag['text'].lower(), ''))
+                    text = ' '.join(all_posts)
+                    #all_posts.append(post.get('text', '')) #bytt om til attributtet du ønsker og lage wordcloud av. Twitter: text, fb:message
+            except:
+                continue"""
+            
+    
+    stop_list = [] #ord som man ikke skal ha med
     stop_list.extend(stopwords.words('english'))
     tweet_mask = imread("D:\\pythontest\\pythonScript\\mask\\twitter_mask.png")
 

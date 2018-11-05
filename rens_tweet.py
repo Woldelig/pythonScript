@@ -61,7 +61,7 @@ if __name__ == '__main__':
                 "created_at": formatert_tweet_dato,
                 "text": tweet['text'],
                 "source": clean_html(tweet['source']),
-                "user_id": tweet['user']['id'],
+                "user_id": tweet['user']['id_str'],
                 "name": tweet['user']['name'],
                 "screen_name": tweet['user']['screen_name'],
                 "location": tweet['user']['location'],

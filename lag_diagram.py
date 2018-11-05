@@ -6,13 +6,13 @@ if __name__ == '__main__':
 
     x = np.array([1, 2, 3])
     x2 = np.array([1, 2])
-    y = np.array([1.300, 0.185, 0.029])
-    y2 = np.array([1.300, 0.0017])
+    y = np.array([4, 0.545, 0.081])
+    y2 = np.array([4, 0.0047])
 
     plt.plot(x,y, marker='o', color='r')
     plt.plot(x2, y2, marker='o', color='g')
     plt.ylabel('Størrelse i gigabyte')
-    plt.axis([0, 4, 0, 1.4])
+    plt.axis([0, 4, 0, 4.5])
 
     xl = np.array(['Rådata', 'Script', 'Excel'])
     l1 = mpatches.Patch(color='red', label='Analysedata')
