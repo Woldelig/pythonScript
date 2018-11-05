@@ -30,6 +30,7 @@ if __name__ == '__main__':
         for line in f:
             post = json.loads(line)
             all_posts.append(post.get('hashtag_1', ''))
+            text = ' '.join(all_posts)
         """for line in f:
             post = json.loads(line)
             try:
