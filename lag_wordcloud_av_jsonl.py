@@ -27,24 +27,38 @@ if __name__ == '__main__':
 
     all_posts = []
     with open(fname) as f:
+        i = 0
+        """
         for line in f:
+            i += 1
+            if i % 10000 == 0:
+                print('\n Linje: ')
+                print(i)
             post = json.loads(line)
-            all_posts.append(post.get('hashtag_1', ''))
+            all_posts.append(post.get('text', ''))
             text = ' '.join(all_posts)
-        """for line in f:
-            post = json.loads(line)
+            """
+        for line in f:
+            tweet = json.loads(line)
+            i += 1
+            if i % 10000 == 0:
+                print('\n Linje: ')
+                print(i)
             try:
-                for hashtag in post["entities"]["hashtags"]:
-                    all_posts.append(post.get(hashtag['text'].lower(), ''))
+                for hashtag in tweet["entities"]['hashtags']:
+                    #print(hashtag['text'])
+                    h = hashtag['text'].lower()
+                    all_posts.append(h)
                     text = ' '.join(all_posts)
                     #all_posts.append(post.get('text', '')) #bytt om til attributtet du ønsker og lage wordcloud av. Twitter: text, fb:message
             except:
-                continue"""
-            
-    
-    stop_list = [] #ord som man ikke skal ha med
+                continue
+
+    stop_list = ['https', 'rt', 'co','http'] #ord som man ikke skal ha med
     stop_list.extend(stopwords.words('english'))
-    tweet_mask = imread("D:\\pythontest\\pythonScript\\mask\\twitter_mask.png")
+    #tweet_mask = imread("D:\\pythontest\\pythonScript\\mask\\twitter_mask.png")
+    tweet_mask = imread("D:\\msm\\pythonScript\\mask\\twitter_mask.png")
+
 
     wordcloud = WordCloud(width=1200, height=600, stopwords=stop_list, background_color="white", mask = tweet_mask).generate(text) #kan legge til Mask for å forme wordclouden!
     plt.imshow(wordcloud)
