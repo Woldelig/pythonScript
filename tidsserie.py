@@ -1,5 +1,5 @@
 """
-Koden er bygget på koden fra pensumboken Mastering Social Media Mining with Python av Marco Bonzanini
+Scriptet er en modifisert utgave av koden fra pensumboken Mastering Social Media Mining with Python av Marco Bonzanini
 
 Original koden kan finnes på https://github.com/bonzanini/Book-SocialMediaMiningPython/blob/master/Chap02-03/twitter_time_series.py
 

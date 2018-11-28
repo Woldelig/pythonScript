@@ -1,3 +1,10 @@
+"""
+Scriptet er en modifisert utgave av koden fra pensumboken Mastering Social Media Mining with Python av Marco Bonzanini
+
+Original koden kan finnes på https://github.com/bonzanini/Book-SocialMediaMiningPython/blob/master/Chap02-03/twitter_map_clustered.py
+
+"""
+
 from argparse import ArgumentParser
 from folium.plugins import MarkerCluster
 import folium
@@ -12,8 +19,7 @@ def get_parser():
 
 #Bruk denne for kart med polygons
 def make_map(geojson_file, map_file):
-    tweet_map = folium.Map(location=[50, 5],
-                           zoom_start=4)
+    tweet_map = folium.Map(location=[50, 5], zoom_start=4)
     marker_cluster = MarkerCluster().add_to(tweet_map)
 
     geojson_layer = folium.GeoJson(open(geojson_file, encoding = "utf-8-sig").read(), name='geojson')

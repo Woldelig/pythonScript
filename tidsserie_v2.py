@@ -1,5 +1,5 @@
 """
-Koden er bygget på koden fra pensumboken Mastering Social Media Mining with Python av Marco Bonzanini
+Scriptet er en modifisert utgave av koden fra pensumboken Mastering Social Media Mining with Python av Marco Bonzanini
 
 Original koden kan finnes på https://github.com/bonzanini/Book-SocialMediaMiningPython/blob/master/Chap02-03/twitter_time_series.py
 
@@ -38,19 +38,18 @@ if __name__ == '__main__':
         ax2.set_ylim(0,10000)
         ax.spines['bottom'].set_visible(False)
         ax2.spines['top'].set_visible(False)
-        #ax2.xaxis.tick_top()
         ax.tick_params(labeltop=False)
-        #ax.xaxis.tick_bottom()
         
-        d = .015  # how big to make the diagonal lines in axes coordinates
-        # arguments to pass to plot, just so we don't keep repeating them
+        # https://matplotlib.org/examples/pylab_examples/broken_axis.html
+        # Koden under er hentet fra matplotlib dokumentasjonen
+        d = .015
         kwargs = dict(transform=ax.transAxes, color='k', clip_on=False)
-        ax.plot((-d, +d), (-d, +d), **kwargs)        # top-left diagonal
-        ax.plot((1 - d, 1 + d), (-d, +d), **kwargs)  # top-right diagonal
+        ax.plot((-d, +d), (-d, +d), **kwargs)
+        ax.plot((1 - d, 1 + d), (-d, +d), **kwargs)
 
-        kwargs.update(transform=ax2.transAxes)  # switch to the bottom axes
-        ax2.plot((-d, +d), (1 - d, 1 + d), **kwargs)  # bottom-left diagonal
-        ax2.plot((1 - d, 1 + d), (1 - d, 1 + d), **kwargs)  # bottom-right diagonal"
+        kwargs.update(transform=ax2.transAxes)
+        ax2.plot((-d, +d), (1 - d, 1 + d), **kwargs)
+        ax2.plot((1 - d, 1 + d), (1 - d, 1 + d), **kwargs)
         
 
         day = mdates.DayLocator(interval=1) #Setter et tick per dag i måneden på x aksen

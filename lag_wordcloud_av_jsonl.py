@@ -46,7 +46,7 @@ if __name__ == '__main__':
                 print(i)
             try:
                 for hashtag in tweet["entities"]['hashtags']:
-                    #print(hashtag['text'])
+                    print(hashtag['text'])
                     h = hashtag['text'].lower()
                     all_posts.append(h)
                     text = ' '.join(all_posts)
